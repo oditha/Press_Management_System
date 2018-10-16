@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 30, 2018 11:39:57 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ORM.OrderStatus" table="OrderStatus" catalog="PMS" optimistic-lock="version">
+        <id name="idOrderStatus" type="java.lang.Integer">
+            <column name="idOrderStatus" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="orders" class="ORM.Orders" fetch="select">
+            <column name="idOrders" not-null="true" />
+        </many-to-one>
+        <property name="status" type="string">
+            <column name="Status" length="45" />
+        </property>
+        <property name="isDelete" type="string">
+            <column name="isDelete" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

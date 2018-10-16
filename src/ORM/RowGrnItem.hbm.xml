@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 30, 2018 11:39:57 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ORM.RowGrnItem" table="RowGrnItem" catalog="PMS" optimistic-lock="version">
+        <id name="idRowGrnItem" type="java.lang.Integer">
+            <column name="idRowGrnItem" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="items" class="ORM.Items" fetch="select">
+            <column name="idRawItems" not-null="true" />
+        </many-to-one>
+        <many-to-one name="rawGrn" class="ORM.RawGrn" fetch="select">
+            <column name="idRawGrn" not-null="true" />
+        </many-to-one>
+        <property name="rowItemQty" type="java.lang.Double">
+            <column name="RowItemQty" precision="22" scale="0" />
+        </property>
+        <property name="grossPrice" type="java.lang.Double">
+            <column name="GrossPrice" precision="22" scale="0" />
+        </property>
+        <property name="rowItemTotal" type="java.lang.Double">
+            <column name="RowItemTotal" precision="22" scale="0" />
+        </property>
+        <property name="rowGrnItemUnit" type="string">
+            <column name="RowGrnItemUnit" length="45" />
+        </property>
+        <set name="supplierReturns" table="SupplierReturn" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idRowGrnItem" not-null="true" />
+            </key>
+            <one-to-many class="ORM.SupplierReturn" />
+        </set>
+    </class>
+</hibernate-mapping>

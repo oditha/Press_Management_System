@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 30, 2018 11:39:57 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ORM.Answers" table="Answers" catalog="PMS" optimistic-lock="version">
+        <id name="idAnswers" type="java.lang.Integer">
+            <column name="idAnswers" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="login" class="ORM.Login" fetch="select">
+            <column name="idLogin" not-null="true" />
+        </many-to-one>
+        <many-to-one name="securityQuestion" class="ORM.SecurityQuestion" fetch="select">
+            <column name="idSecurityQuestion" not-null="true" />
+        </many-to-one>
+        <property name="a1" type="string">
+            <column name="A1" length="45" />
+        </property>
+        <property name="a2" type="string">
+            <column name="A2" length="45" />
+        </property>
+        <property name="a3" type="string">
+            <column name="A3" length="45" />
+        </property>
+        <property name="isDelete" type="string">
+            <column name="isDelete" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

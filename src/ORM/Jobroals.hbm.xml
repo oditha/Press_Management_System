@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 30, 2018 11:39:57 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ORM.Jobroals" table="JOBRoals" catalog="PMS" optimistic-lock="version">
+        <id name="idJobroals" type="java.lang.Integer">
+            <column name="idJOBRoals" />
+            <generator class="identity" />
+        </id>
+        <property name="jobcode" type="string">
+            <column name="JOBCODE" length="45" />
+        </property>
+        <property name="roleName" type="string">
+            <column name="RoleName" length="45" />
+        </property>
+        <property name="isDelete" type="string">
+            <column name="isDelete" length="45" />
+        </property>
+        <set name="employeesHasJobroalses" table="Employees_has_JOBRoals" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="JOBRoals" not-null="true" />
+            </key>
+            <one-to-many class="ORM.EmployeesHasJobroals" />
+        </set>
+        <set name="tmpemployeesHasJobroalses" table="TMPEmployees_has_JOBRoals" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="JOBRoals" not-null="true" />
+            </key>
+            <one-to-many class="ORM.TmpemployeesHasJobroals" />
+        </set>
+    </class>
+</hibernate-mapping>

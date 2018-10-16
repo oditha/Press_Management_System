@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 30, 2018 11:39:57 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ORM.Promotion" table="Promotion" catalog="PMS" optimistic-lock="version">
+        <id name="idPromotion" type="java.lang.Integer">
+            <column name="idPromotion" />
+            <generator class="identity" />
+        </id>
+        <property name="promotionCode" type="string">
+            <column name="PromotionCode" length="45" />
+        </property>
+        <property name="promoStartDate" type="string">
+            <column name="PromoStartDate" length="45" />
+        </property>
+        <property name="promoEndDate" type="string">
+            <column name="PromoEndDate" length="45" />
+        </property>
+        <property name="discountAmountPresent" type="java.lang.Double">
+            <column name="DiscountAmountPresent" precision="22" scale="0" />
+        </property>
+        <property name="discountAmountRs" type="java.lang.Double">
+            <column name="DiscountAmountRS" precision="22" scale="0" />
+        </property>
+        <property name="isDelete" type="string">
+            <column name="isDelete" length="45" />
+        </property>
+        <property name="maxDiscountAmount" type="string">
+            <column name="MaxDiscountAmount" length="45" />
+        </property>
+        <property name="promotionDuration" type="string">
+            <column name="PromotionDuration" length="45" />
+        </property>
+        <set name="promotionItemses" table="PromotionItems" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idPromotion" not-null="true" />
+            </key>
+            <one-to-many class="ORM.PromotionItems" />
+        </set>
+    </class>
+</hibernate-mapping>

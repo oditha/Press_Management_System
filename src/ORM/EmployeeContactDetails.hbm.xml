@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 30, 2018 11:39:57 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ORM.EmployeeContactDetails" table="EmployeeContactDetails" catalog="PMS" optimistic-lock="version">
+        <id name="idEmployeeContactDetails" type="java.lang.Integer">
+            <column name="idEmployeeContactDetails" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="employees" class="ORM.Employees" fetch="select">
+            <column name="idEmployees" not-null="true" />
+        </many-to-one>
+        <property name="contact1" type="string">
+            <column name="Contact1" length="45" />
+        </property>
+        <property name="contact2" type="string">
+            <column name="Contact2" length="45" />
+        </property>
+        <property name="emailAddress" type="string">
+            <column name="emailAddress" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

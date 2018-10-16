@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 30, 2018 11:39:57 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ORM.Supplier" table="Supplier" catalog="PMS" optimistic-lock="version">
+        <id name="idSupplier" type="java.lang.Integer">
+            <column name="idSupplier" />
+            <generator class="identity" />
+        </id>
+        <property name="supplierName" type="string">
+            <column name="SupplierName" length="45" />
+        </property>
+        <property name="contactNo1" type="string">
+            <column name="ContactNo1" length="45" />
+        </property>
+        <property name="contactNo2" type="string">
+            <column name="ContactNo2" length="45" />
+        </property>
+        <property name="address1" type="string">
+            <column name="Address1" length="45" />
+        </property>
+        <property name="address2" type="string">
+            <column name="Address2" length="45" />
+        </property>
+        <property name="city" type="string">
+            <column name="City" length="45" />
+        </property>
+        <property name="isDelete" type="string">
+            <column name="isDelete" length="45" />
+        </property>
+        <set name="rowItemGrnPayments" table="RowItemGrnPayment" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idSupplier" not-null="true" />
+            </key>
+            <one-to-many class="ORM.RowItemGrnPayment" />
+        </set>
+        <set name="rawGrns" table="RawGrn" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idSupplier" not-null="true" />
+            </key>
+            <one-to-many class="ORM.RawGrn" />
+        </set>
+        <set name="supplierReturns" table="SupplierReturn" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idSupplier" not-null="true" />
+            </key>
+            <one-to-many class="ORM.SupplierReturn" />
+        </set>
+    </class>
+</hibernate-mapping>

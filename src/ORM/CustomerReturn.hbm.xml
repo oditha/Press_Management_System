@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 30, 2018 11:39:57 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ORM.CustomerReturn" table="CustomerReturn" catalog="PMS" optimistic-lock="version">
+        <id name="idCustomerReturn" type="java.lang.Integer">
+            <column name="idCustomerReturn" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="customer" class="ORM.Customer" fetch="select">
+            <column name="idCustomer" not-null="true" />
+        </many-to-one>
+        <many-to-one name="invoice" class="ORM.Invoice" fetch="select">
+            <column name="idInvoice" not-null="true" />
+        </many-to-one>
+        <many-to-one name="invoiceItems" class="ORM.InvoiceItems" fetch="select">
+            <column name="idInvoiceItems" not-null="true" />
+        </many-to-one>
+        <property name="returnDate" type="string">
+            <column name="ReturnDate" length="45" />
+        </property>
+        <property name="returnTime" type="string">
+            <column name="ReturnTime" length="45" />
+        </property>
+        <property name="returnReson" type="string">
+            <column name="ReturnReson" length="45" />
+        </property>
+        <property name="qty" type="string">
+            <column name="QTY" length="45" />
+        </property>
+        <property name="returnTerm" type="string">
+            <column name="ReturnTerm" length="45" />
+        </property>
+        <property name="isDelete" type="string">
+            <column name="isDelete" length="45" />
+        </property>
+        <property name="createdBy" type="string">
+            <column name="CreatedBy" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

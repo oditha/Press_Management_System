@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 30, 2018 11:39:57 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ORM.InvoiceCancel" table="InvoiceCancel" catalog="PMS" optimistic-lock="version">
+        <id name="idInvoiceCance" type="java.lang.Integer">
+            <column name="idInvoiceCance" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="invoice" class="ORM.Invoice" fetch="select">
+            <column name="idInvoice" not-null="true" />
+        </many-to-one>
+        <property name="cancelDate" type="string">
+            <column name="CancelDate" length="45" />
+        </property>
+        <property name="cancelTime" type="string">
+            <column name="CancelTime" length="45" />
+        </property>
+        <property name="reson" type="string">
+            <column name="Reson" length="45" />
+        </property>
+        <property name="createdBy" type="string">
+            <column name="CreatedBy" length="45" />
+        </property>
+        <property name="isDelete" type="string">
+            <column name="isDelete" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

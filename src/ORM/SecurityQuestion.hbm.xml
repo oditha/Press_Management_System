@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 30, 2018 11:39:57 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ORM.SecurityQuestion" table="SecurityQuestion" catalog="PMS" optimistic-lock="version">
+        <id name="idSecurityQuestion" type="java.lang.Integer">
+            <column name="idSecurityQuestion" />
+            <generator class="identity" />
+        </id>
+        <property name="q1" type="string">
+            <column name="Q1" length="45" />
+        </property>
+        <property name="q2" type="string">
+            <column name="Q2" length="45" />
+        </property>
+        <property name="q3" type="string">
+            <column name="Q3" length="45" />
+        </property>
+        <set name="answerses" table="Answers" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idSecurityQuestion" not-null="true" />
+            </key>
+            <one-to-many class="ORM.Answers" />
+        </set>
+    </class>
+</hibernate-mapping>

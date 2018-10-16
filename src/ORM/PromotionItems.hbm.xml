@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 30, 2018 11:39:57 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ORM.PromotionItems" table="PromotionItems" catalog="PMS" optimistic-lock="version">
+        <id name="idPromotionItems" type="java.lang.Integer">
+            <column name="idPromotionItems" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="items" class="ORM.Items" fetch="select">
+            <column name="idRawItems" not-null="true" />
+        </many-to-one>
+        <many-to-one name="promotion" class="ORM.Promotion" fetch="select">
+            <column name="idPromotion" not-null="true" />
+        </many-to-one>
+        <property name="isDelete" type="string">
+            <column name="isDelete" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

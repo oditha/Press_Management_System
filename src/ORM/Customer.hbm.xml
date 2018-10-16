@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 30, 2018 11:39:57 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ORM.Customer" table="Customer" catalog="PMS" optimistic-lock="version">
+        <id name="idCustomer" type="java.lang.Integer">
+            <column name="idCustomer" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="string">
+            <column name="Name" length="45" />
+        </property>
+        <property name="contact1" type="string">
+            <column name="Contact1" length="45" />
+        </property>
+        <property name="address1" type="string">
+            <column name="Address1" length="45" />
+        </property>
+        <property name="address2" type="string">
+            <column name="Address2" length="45" />
+        </property>
+        <property name="city" type="string">
+            <column name="City" length="45" />
+        </property>
+        <property name="isDelete" type="string">
+            <column name="isDelete" length="45" />
+        </property>
+        <set name="customerReturns" table="CustomerReturn" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idCustomer" not-null="true" />
+            </key>
+            <one-to-many class="ORM.CustomerReturn" />
+        </set>
+        <set name="invoicePayments" table="InvoicePayment" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idCustomer" not-null="true" />
+            </key>
+            <one-to-many class="ORM.InvoicePayment" />
+        </set>
+        <set name="customerHasInvoices" table="Customer_has_Invoice" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idCustomer" not-null="true" />
+            </key>
+            <one-to-many class="ORM.CustomerHasInvoice" />
+        </set>
+        <set name="orderses" table="Orders" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idCustomer" not-null="true" />
+            </key>
+            <one-to-many class="ORM.Orders" />
+        </set>
+        <set name="quatationses" table="Quatations" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idCustomer" not-null="true" />
+            </key>
+            <one-to-many class="ORM.Quatations" />
+        </set>
+    </class>
+</hibernate-mapping>

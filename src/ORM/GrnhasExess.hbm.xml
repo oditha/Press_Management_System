@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 30, 2018 11:39:57 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ORM.GrnhasExess" table="GRNHasExess" catalog="PMS" optimistic-lock="version">
+        <id name="idGrnhasExess" type="java.lang.Integer">
+            <column name="idGRNHasExess" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="rawGrn" class="ORM.RawGrn" fetch="select">
+            <column name="idRawGrn" not-null="true" />
+        </many-to-one>
+        <property name="exessDate" type="string">
+            <column name="ExessDate" length="45" />
+        </property>
+        <property name="exessAmount" type="string">
+            <column name="ExessAmount" length="45" />
+        </property>
+        <property name="isDelete" type="string">
+            <column name="isDelete" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

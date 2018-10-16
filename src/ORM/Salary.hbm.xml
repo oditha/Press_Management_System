@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 30, 2018 11:39:57 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ORM.Salary" table="Salary" catalog="PMS" optimistic-lock="version">
+        <id name="idSalary" type="java.lang.Integer">
+            <column name="idSalary" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="employees" class="ORM.Employees" fetch="select">
+            <column name="idEmployees" not-null="true" />
+        </many-to-one>
+        <property name="date" type="string">
+            <column name="Date" length="45" />
+        </property>
+        <property name="totalAllowance" type="java.lang.Double">
+            <column name="TotalAllowance" precision="22" scale="0" />
+        </property>
+        <property name="totalDeductions" type="java.lang.Double">
+            <column name="TotalDeductions" precision="22" scale="0" />
+        </property>
+        <property name="etf" type="java.lang.Double">
+            <column name="Etf" precision="22" scale="0" />
+        </property>
+        <property name="epf" type="java.lang.Double">
+            <column name="Epf" precision="22" scale="0" />
+        </property>
+        <property name="totalPayments" type="java.lang.Double">
+            <column name="TotalPayments" precision="22" scale="0" />
+        </property>
+        <property name="basicSalary" type="java.lang.Double">
+            <column name="BasicSalary" precision="22" scale="0" />
+        </property>
+        <property name="netTotal" type="java.lang.Double">
+            <column name="NetTotal" precision="22" scale="0" />
+        </property>
+        <property name="isDelete" type="string">
+            <column name="isDelete" length="45" />
+        </property>
+        <property name="serviceCharge" type="string">
+            <column name="ServiceCharge" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 30, 2018 11:39:57 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ORM.RawGrn" table="RawGrn" catalog="PMS" optimistic-lock="version">
+        <id name="idRawGrn" type="java.lang.Integer">
+            <column name="idRawGrn" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="supplier" class="ORM.Supplier" fetch="select">
+            <column name="idSupplier" not-null="true" />
+        </many-to-one>
+        <property name="rawGrnNo" type="string">
+            <column name="RawGrnNo" length="45" />
+        </property>
+        <property name="rawGrnDate" type="string">
+            <column name="RawGrnDate" length="45" />
+        </property>
+        <property name="subTotal" type="java.lang.Double">
+            <column name="SubTotal" precision="22" scale="0" />
+        </property>
+        <property name="netTotal" type="java.lang.Double">
+            <column name="NetTotal" precision="22" scale="0" />
+        </property>
+        <property name="isDelete" type="string">
+            <column name="isDelete" length="45" />
+        </property>
+        <set name="rowItemGrnPayments" table="RowItemGrnPayment" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idRawItemGrn" not-null="true" />
+            </key>
+            <one-to-many class="ORM.RowItemGrnPayment" />
+        </set>
+        <set name="grnhasExesses" table="GRNHasExess" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idRawGrn" not-null="true" />
+            </key>
+            <one-to-many class="ORM.GrnhasExess" />
+        </set>
+        <set name="rowGrnItems" table="RowGrnItem" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idRawGrn" not-null="true" />
+            </key>
+            <one-to-many class="ORM.RowGrnItem" />
+        </set>
+    </class>
+</hibernate-mapping>

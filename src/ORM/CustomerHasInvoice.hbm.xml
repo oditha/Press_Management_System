@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 30, 2018 11:39:57 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ORM.CustomerHasInvoice" table="Customer_has_Invoice" catalog="PMS" optimistic-lock="version">
+        <id name="idRecord" type="java.lang.Integer">
+            <column name="idRecord" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="customer" class="ORM.Customer" fetch="select">
+            <column name="idCustomer" not-null="true" />
+        </many-to-one>
+        <many-to-one name="invoice" class="ORM.Invoice" fetch="select">
+            <column name="idInvoice" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 30, 2018 11:39:57 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ORM.AllowanceHasEmployees" table="Allowance_has_Employees" catalog="PMS" optimistic-lock="version">
+        <id name="allowanceHasEmployeescol" type="java.lang.Integer">
+            <column name="Allowance_has_Employeescol" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="allowance" class="ORM.Allowance" fetch="select">
+            <column name="idAllowance" not-null="true" />
+        </many-to-one>
+        <many-to-one name="employees" class="ORM.Employees" fetch="select">
+            <column name="idEmployees" not-null="true" />
+        </many-to-one>
+        <property name="date" type="string">
+            <column name="Date" length="45" />
+        </property>
+        <property name="amount" type="java.lang.Double">
+            <column name="Amount" precision="22" scale="0" />
+        </property>
+        <property name="isDelete" type="string">
+            <column name="isDelete" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

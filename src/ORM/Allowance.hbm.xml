@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 30, 2018 11:39:57 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ORM.Allowance" table="Allowance" catalog="PMS" optimistic-lock="version">
+        <id name="idAllowance" type="java.lang.Integer">
+            <column name="idAllowance" />
+            <generator class="identity" />
+        </id>
+        <property name="type" type="string">
+            <column name="Type" length="45" />
+        </property>
+        <set name="allowanceHasEmployeeses" table="Allowance_has_Employees" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idAllowance" not-null="true" />
+            </key>
+            <one-to-many class="ORM.AllowanceHasEmployees" />
+        </set>
+    </class>
+</hibernate-mapping>

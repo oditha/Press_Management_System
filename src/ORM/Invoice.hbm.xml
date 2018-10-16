@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 30, 2018 11:39:57 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ORM.Invoice" table="Invoice" catalog="PMS" optimistic-lock="version">
+        <id name="idInvoice" type="java.lang.Integer">
+            <column name="idInvoice" />
+            <generator class="identity" />
+        </id>
+        <property name="invoiceNo" type="string">
+            <column name="InvoiceNo" length="45" />
+        </property>
+        <property name="invoiceDate" type="string">
+            <column name="InvoiceDate" length="45" />
+        </property>
+        <property name="subtotal" type="java.lang.Double">
+            <column name="Subtotal" precision="22" scale="0" />
+        </property>
+        <property name="discount" type="java.lang.Double">
+            <column name="Discount" precision="22" scale="0" />
+        </property>
+        <property name="netTotal" type="java.lang.Double">
+            <column name="NetTotal" precision="22" scale="0" />
+        </property>
+        <property name="isDelete" type="string">
+            <column name="isDelete" length="45" />
+        </property>
+        <property name="createdBy" type="string">
+            <column name="CreatedBy" length="45" />
+        </property>
+        <property name="invoiceStatus" type="string">
+            <column name="InvoiceStatus" length="45" />
+        </property>
+        <property name="invoiceTime" type="string">
+            <column name="InvoiceTime" length="45" />
+        </property>
+        <property name="paymentType" type="string">
+            <column name="PaymentType" length="20" />
+        </property>
+        <property name="promoCode" type="string">
+            <column name="PromoCode" length="20" />
+        </property>
+        <property name="invoiceType" type="string">
+            <column name="InvoiceType" length="45" />
+        </property>
+        <property name="serviceNameForPrint" type="string">
+            <column name="ServiceNameForPrint" length="200" />
+        </property>
+        <property name="serviceQty" type="java.lang.Double">
+            <column name="ServiceQTY" precision="22" scale="0" />
+        </property>
+        <property name="serviceUnitTotal" type="java.lang.Double">
+            <column name="ServiceUnitTotal" precision="22" scale="0" />
+        </property>
+        <set name="invoicePaymentInfos" table="InvoicePaymentInfo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idInvoice" not-null="true" />
+            </key>
+            <one-to-many class="ORM.InvoicePaymentInfo" />
+        </set>
+        <set name="invoiceItemses" table="InvoiceItems" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idInvoice" not-null="true" />
+            </key>
+            <one-to-many class="ORM.InvoiceItems" />
+        </set>
+        <set name="invoiceCancels" table="InvoiceCancel" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idInvoice" not-null="true" />
+            </key>
+            <one-to-many class="ORM.InvoiceCancel" />
+        </set>
+        <set name="invoiceHasCreditCards" table="InvoiceHasCreditCard" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idInvoice" not-null="true" />
+            </key>
+            <one-to-many class="ORM.InvoiceHasCreditCard" />
+        </set>
+        <set name="customerReturns" table="CustomerReturn" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idInvoice" not-null="true" />
+            </key>
+            <one-to-many class="ORM.CustomerReturn" />
+        </set>
+        <set name="customerHasInvoices" table="Customer_has_Invoice" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idInvoice" not-null="true" />
+            </key>
+            <one-to-many class="ORM.CustomerHasInvoice" />
+        </set>
+        <set name="invoicePayments" table="InvoicePayment" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idInvoice" not-null="true" />
+            </key>
+            <one-to-many class="ORM.InvoicePayment" />
+        </set>
+    </class>
+</hibernate-mapping>

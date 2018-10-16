@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 30, 2018 11:39:57 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ORM.Items" table="Items" catalog="PMS" optimistic-lock="version">
+        <id name="idRawItems" type="java.lang.Integer">
+            <column name="idRawItems" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="itemCatagory" class="ORM.ItemCatagory" fetch="select">
+            <column name="idRowItemCatagory" not-null="true" />
+        </many-to-one>
+        <property name="itemName" type="string">
+            <column name="ItemName" length="45" />
+        </property>
+        <property name="itemsUnitPrice" type="java.lang.Double">
+            <column name="ItemsUnitPrice" precision="22" scale="0" />
+        </property>
+        <property name="description" type="string">
+            <column name="Description" length="45" />
+        </property>
+        <property name="isDelete" type="string">
+            <column name="isDelete" length="45" />
+        </property>
+        <property name="isRaw" type="string">
+            <column name="isRaw" length="45" />
+        </property>
+        <property name="isService" type="string">
+            <column name="isService" length="45" />
+        </property>
+        <property name="itemsSellingPrice" type="java.lang.Double">
+            <column name="ItemsSellingPrice" precision="22" scale="0" />
+        </property>
+        <property name="itemsCode" type="string">
+            <column name="ItemsCode" length="45" />
+        </property>
+        <set name="promotionItemses" table="PromotionItems" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idRawItems" not-null="true" />
+            </key>
+            <one-to-many class="ORM.PromotionItems" />
+        </set>
+        <set name="rawItemStocks" table="RawItemStock" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idRawItems" not-null="true" />
+            </key>
+            <one-to-many class="ORM.RawItemStock" />
+        </set>
+        <set name="stockOutgoings" table="StockOutgoing" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idRawItems" not-null="true" />
+            </key>
+            <one-to-many class="ORM.StockOutgoing" />
+        </set>
+        <set name="rawItemInfos" table="RawItemInfo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idRawItems" not-null="true" />
+            </key>
+            <one-to-many class="ORM.RawItemInfo" />
+        </set>
+        <set name="rowGrnItems" table="RowGrnItem" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idRawItems" not-null="true" />
+            </key>
+            <one-to-many class="ORM.RowGrnItem" />
+        </set>
+        <set name="invoiceItemses" table="InvoiceItems" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idRawItems" not-null="true" />
+            </key>
+            <one-to-many class="ORM.InvoiceItems" />
+        </set>
+        <set name="quattionItemses" table="QuattionItems" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idRawItems" not-null="true" />
+            </key>
+            <one-to-many class="ORM.QuattionItems" />
+        </set>
+        <set name="orderItemses" table="OrderItems" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idRawItems" not-null="true" />
+            </key>
+            <one-to-many class="ORM.OrderItems" />
+        </set>
+    </class>
+</hibernate-mapping>

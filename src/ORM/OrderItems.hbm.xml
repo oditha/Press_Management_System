@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 30, 2018 11:39:57 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ORM.OrderItems" table="OrderItems" catalog="PMS" optimistic-lock="version">
+        <id name="idOrderItems" type="java.lang.Integer">
+            <column name="idOrderItems" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="items" class="ORM.Items" fetch="select">
+            <column name="idRawItems" not-null="true" />
+        </many-to-one>
+        <many-to-one name="orders" class="ORM.Orders" fetch="select">
+            <column name="idOrders" not-null="true" />
+        </many-to-one>
+        <property name="qty" type="java.lang.Double">
+            <column name="Qty" precision="22" scale="0" />
+        </property>
+        <property name="unitPrice" type="java.lang.Double">
+            <column name="UnitPrice" precision="22" scale="0" />
+        </property>
+        <property name="netTotalOrdersItem" type="java.lang.Double">
+            <column name="NetTotalOrdersItem" precision="22" scale="0" />
+        </property>
+        <property name="isDelete" type="string">
+            <column name="isDelete" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

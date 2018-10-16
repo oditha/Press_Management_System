@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 30, 2018 11:39:57 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ORM.Employees" table="Employees" catalog="PMS" optimistic-lock="version">
+        <id name="idEmployees" type="java.lang.Integer">
+            <column name="idEmployees" />
+            <generator class="identity" />
+        </id>
+        <property name="employeeNic" type="string">
+            <column name="EmployeeNIC" length="45" />
+        </property>
+        <property name="employeName" type="string">
+            <column name="EmployeName" length="200" />
+        </property>
+        <property name="employeeContactNo" type="string">
+            <column name="EmployeeContactNo" length="45" />
+        </property>
+        <property name="employeesAddress1" type="string">
+            <column name="EmployeesAddress1" length="45" />
+        </property>
+        <property name="employeeAddress2" type="string">
+            <column name="EmployeeAddress2" length="45" />
+        </property>
+        <property name="employeeCity" type="string">
+            <column name="EmployeeCity" length="45" />
+        </property>
+        <property name="employeeEtf" type="string">
+            <column name="EmployeeETF" length="45" />
+        </property>
+        <property name="employeeEpf" type="string">
+            <column name="EmployeeEPF" length="45" />
+        </property>
+        <property name="isDelete" type="string">
+            <column name="isDelete" length="45" />
+        </property>
+        <property name="basicSalary" type="java.lang.Double">
+            <column name="BasicSalary" precision="22" scale="0" />
+        </property>
+        <set name="logins" table="Login" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idEmployees" not-null="true" />
+            </key>
+            <one-to-many class="ORM.Login" />
+        </set>
+        <set name="tmpemployeesHasJobroalses" table="TMPEmployees_has_JOBRoals" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idEmployees" not-null="true" />
+            </key>
+            <one-to-many class="ORM.TmpemployeesHasJobroals" />
+        </set>
+        <set name="allowanceHasEmployeeses" table="Allowance_has_Employees" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idEmployees" not-null="true" />
+            </key>
+            <one-to-many class="ORM.AllowanceHasEmployees" />
+        </set>
+        <set name="employeesHasDeductionses" table="Employees_has_Deductions" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idEmployees" not-null="true" />
+            </key>
+            <one-to-many class="ORM.EmployeesHasDeductions" />
+        </set>
+        <set name="employeeContactDetailses" table="EmployeeContactDetails" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idEmployees" not-null="true" />
+            </key>
+            <one-to-many class="ORM.EmployeeContactDetails" />
+        </set>
+        <set name="employeesHasJobroalses" table="Employees_has_JOBRoals" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idEmployees" not-null="true" />
+            </key>
+            <one-to-many class="ORM.EmployeesHasJobroals" />
+        </set>
+        <set name="salaries" table="Salary" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idEmployees" not-null="true" />
+            </key>
+            <one-to-many class="ORM.Salary" />
+        </set>
+        <set name="paymentses" table="payments" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idEmployees" not-null="true" />
+            </key>
+            <one-to-many class="ORM.Payments" />
+        </set>
+        <set name="attendences" table="Attendence" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idEmployees" not-null="true" />
+            </key>
+            <one-to-many class="ORM.Attendence" />
+        </set>
+    </class>
+</hibernate-mapping>
